@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"org.howard.edu.lsp.assignment2","l":"Driver"},{"p":"org.howard.edu.lsp.assignment2","l":"FileReader"},{"p":"org.howard.edu.lsp.assignment1","l":"HelloWorld"}];updateSearchResults();

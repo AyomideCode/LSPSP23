@@ -6,25 +6,28 @@ import java.net.URL;
 import java.util.*;
 
 /**
- * Ayomide Okeshola @02936424
+ * @author AyomideCode
+ * Ayomide Okeshola @ 02936424
  * 
  * .java file initially provided by instructor (bpwoolfolk), then edited for Assignment #2.
  * The program is designed to read a text file off of main path, and count the number of times each 'word' contained, appears.
  * 
  * Unique rules to 'words':
- * It is assumed the file only contains words, spaces, digits and newlines.
- * Spaces, punctuation, and other non-letter characters i.e. digits are not counted as words. ✅
- * Contractions are counted as two words, and separated. ✅
- * No case-sensitivity. "Design" and "design" should count the same. ✅
- * Consider words with <= 3 letters to be trivial and uncounted. ✅
+ * It is assumed the file only contains words, spaces, digits and newlines. 
+ * Spaces, punctuation, and other non-letter characters i.e. digits are not counted as words. 
+ * Contractions are counted as two words, and separated. 
+ * No case-sensitivity. "Design" and "design" should count the same. 
+ * Consider words with three or less letters to be trivial and uncounted. 
  */
 
 public class FileReader {
 	/**
 	 * 
-	 * @param resource qualifies the location of the file.
+	 * @param resource qualifies the location of the file
 	 * @throws FileNotFoundException
+	 * @return output, a string that lists the names and their individual count, using words.txt
 	 */
+	
 	public String readToString(String resource) throws FileNotFoundException {
 		URL url = getClass().getClassLoader().getResource(resource); 
 		
@@ -47,7 +50,7 @@ public class FileReader {
 		            	continue;
 		            }
 		            
-		            nextWord = nextWord.toLowerCase(); // forces case-sensitivity
+		            nextWord = nextWord.toLowerCase(); // forces case-insensitivity
 		            
 		            if(words.contains(nextWord)) { //this determines if the word is in the ArrayList
 		                int index = words.indexOf(nextWord);
@@ -60,14 +63,15 @@ public class FileReader {
 				}
 				
 			} finally {
-				sc.close(); // closes the scanner
-				for(int i = 0; i < words.size(); i++){ // prints the output
-		            System.out.print(words.get(i) + "\t" + count.get(i) + "\n");
-		        }
-				System.exit(0);
-				
-				
+				sc.close(); // closes the scanner	
 			}
+			
+			String output = "";
+			for(int i = 0; i < words.size(); i++){ // generates the output
+	            output += (words.get(i) + "\t" + count.get(i) + "\n");
+	        }
+			return output;	
+
 		}
 		throw new FileNotFoundException();
 	}
