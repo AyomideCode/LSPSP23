@@ -105,7 +105,7 @@ public class IntegerSet {
 	// Removes an item from the set or does nothing if not there
 	public void remove(int item){
 		ArrayList<Integer> tempArrayList = new ArrayList<Integer>();	// creates getter for the set
-		for (int i=0; i < set.size(); i++) {
+		for (int i = 0; i < set.size(); i++) {
 			if(set.get(i) != item){
 				tempArrayList.add(set.get(i));
 				//System.out.println(tempArrayList);
@@ -117,31 +117,27 @@ public class IntegerSet {
 	// Set union
 	public void union (IntegerSet setB) {
 		ArrayList<Integer> tempArrayList = setB.getSet();			// creates getter for the set
-	    for (int i=0; i< tempArrayList.size(); i++) {				// iterates through all elements of passed in ArrayList<Integer)
+	    for (int i = 0; i < tempArrayList.size(); i++) {			// iterates through all elements of passed in ArrayList<Integer)
 	       if (!set.contains(tempArrayList.get(i)))  {				// checks if item is not already in set
 	           add(tempArrayList.get(i));							// if so, adds it
 	       }
-	    }	  
+	    }
+		System.out.println(tempArrayList);
 	}	
 	
 	// Set intersection
 	public void intersect(IntegerSet setB){
-		ArrayList<Integer> tempArrayList = setB.getSet();			// creates getter for the set
-		ArrayList<Integer> fillerList = new ArrayList<Integer>();	// creates getter for the common set elements
-	    for (int i=0; i< tempArrayList.size(); i++) {				// iterates through all elements of passed in ArrayList<Integer)
-	       if (set.contains(tempArrayList.get(i)))  {				// checks if item is already in set
-	           fillerList.add(tempArrayList.get(i));				// adds the item, if not there
-	       }
-	    }
-        System.out.println(fillerList);
-
+		ArrayList<Integer> tempArrayListA = set;
+		ArrayList<Integer> tempArrayListB = setB.getSet();
+		tempArrayListA.retainAll(tempArrayListB);
+		System.out.println(tempArrayListA);
 	} 
 
 	// Set difference, i.e., s1 - s2
 	public void diff(IntegerSet setB) {
 		ArrayList<Integer> tempArrayList = set;						// creates getter for the set
 		ArrayList<Integer> fillerList = new ArrayList<Integer>();	// creates getter for elements only in set A
-	    for (int i=0; i< tempArrayList.size(); i++) {				// iterates through all elements of passed in ArrayList<Integer)
+	    for (int i = 0; i < tempArrayList.size(); i++) {			// iterates through all elements of passed in ArrayList<Integer)
 	       if (!setB.contains(tempArrayList.get(i)))  {				// checks if item is already in set
 	           fillerList.add(tempArrayList.get(i));				// adds the item, if not there
 	       }

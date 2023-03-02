@@ -7,9 +7,6 @@ package org.howard.edu.lsp.assignment4;
  * This class exists to contain the program's main method, and to test the IntegerSet class while calling methods from it.
  */
 public class Driver {
-
-	// intersect() might be broken.
-	// difference() is broken.
 	
 	public static void main(String[] args) throws IntegerSetException {
 		System.out.println("This program will go through and execute all the methods in IntegerSet.java. \n");
@@ -66,10 +63,16 @@ public class Driver {
 		System.out.println("Testing union().");
 		System.out.println("Value of Set 1 is: " + set1.toString());
 		System.out.println("Value of Set 2 is: " + set2.toString());
-		set1.union(set2);																		// union of set 1 and set 2
-		System.out.println("Result of union of Set 1 and Set 2: \n" + set1.toString() + "\n");
 		
-		System.out.println("Testing intersect(). Intersecting Set 1 & Set 2:");
+		System.out.println("Result of union of Set 1 and Set 2: ");
+		set1.union(set2);
+		
+		System.out.println("\nRestoring Set 1 back to its original value, before testing intersect():");
+		set1.remove(4);
+		set1.remove(5);
+		System.out.println("Value of Set 1 now is: " + set1.toString() + "\n");
+		
+		System.out.println("Testing intersect(). Intersecting Set 1 with Set 2:");
 		set1.intersect(set2);
 		
 		System.out.println("\nTesting difference(). Set 2 - Set 1:");
@@ -80,7 +83,7 @@ public class Driver {
 		set1.clear();
 		System.out.println("Testing isEmpty() again. Is Set 1 empty? True/false: \n" + set1.isEmpty() + "\n");
 		
-		System.out.println("Testing IntegerSetException, by using smallest() on the emptied Set 1: \n");
+		System.out.println("Final test is on IntegerSetException, by using smallest() on the now emptied Set 1: \n");
 		set1.smallest();
 	}
 	
