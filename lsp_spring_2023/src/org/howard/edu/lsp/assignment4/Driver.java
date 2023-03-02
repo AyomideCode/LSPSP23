@@ -5,6 +5,8 @@ package org.howard.edu.lsp.assignment4;
  * Ayomide Okeshola @ 02936424
  * 
  * This class exists to contain the program's main method, and to test the IntegerSet class while calling methods from it.
+ * Driver.java tries to go through the methods as in order as possible, but some changes are made to Set 1 while testing, in order to help demonstrate the next method.
+ * Every method is functional. An IntegerSetException is intentionally triggered at the end of the program, in order to demonstrate it working.
  */
 public class Driver {
 	
@@ -22,8 +24,7 @@ public class Driver {
 		
 		System.out.println("Testing clear().");
 		set1.clear();
-		System.out.println("Set 1, as a result of clearing: \n" + set1.toString());
-		System.out.println("(Since Set 1 was cleared, toString() printed nothing as to represent the now empty set.) \n");
+		System.out.println("Set 1, as a result of clearing: \n" + set1.toString() + "\n");
 		
 		System.out.println("Adding those same three items back to Set 1...");
 		set1.add(1);
@@ -47,6 +48,8 @@ public class Driver {
 		System.out.println("Testing equals(). Does Set 1 have the same values as Set 2? True/false: \n" + set1.equals(set2) + "\n");
 
 		System.out.println("Testing contains(). Does Set 1 contain the value '2'? True/false: \n" + set1.contains(2) + "\n");
+		
+		System.out.println("Testing contains() again. Does Set 1 contain the value '999'? True/false: \n" + set1.contains(999) + "\n");
 
 		System.out.println("Testing largest(). Largest item in Set 1: \n" + set1.largest() + "\n");
 		
