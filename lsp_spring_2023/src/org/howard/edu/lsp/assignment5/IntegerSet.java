@@ -123,14 +123,10 @@ public class IntegerSet {
 
 	// Set difference, i.e., s1 - s2
 	public void diff(IntegerSet setB) {
-		ArrayList<Integer> tempArrayList = set;						// creates getter for the set
-		ArrayList<Integer> fillerList = new ArrayList<Integer>();	// creates getter for elements only in set A
-	    for (int i = 0; i < tempArrayList.size(); i++) {			// iterates through all elements of passed in ArrayList<Integer)
-	       if (!setB.contains(tempArrayList.get(i)))  {				// checks if item is already in set
-	           fillerList.add(tempArrayList.get(i));				// adds the item, if not there
-	       }
-	    }
-	    set = fillerList;
+		ArrayList<Integer> tempArrayList = setB.getSet();
+		ArrayList<Integer> newList = set;
+		newList.removeAll(tempArrayList);
+		set = newList;
 	}
 
 	// Returns true if the set is empty, false otherwise

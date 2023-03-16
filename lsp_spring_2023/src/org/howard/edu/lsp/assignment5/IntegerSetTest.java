@@ -8,24 +8,20 @@ import org.junit.jupiter.api.DisplayName;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.AfterEach;
 
 
 public class IntegerSetTest {
 	
 	private IntegerSet set1;
 	private IntegerSet set2;
-	private IntegerSet test;
 	
 	@BeforeEach
 	void setUp() {
 		set1 = new IntegerSet();
 		set2 = new IntegerSet();
-		test = new IntegerSet();
 	}
 	
 	@Test
@@ -149,18 +145,21 @@ public class IntegerSetTest {
 	@Test
 	@DisplayName("Test case for intersect()")
 	void testIntersect() {
+		set1.add(1);
 		set1.add(2);
-		set1.add(5);
-		set1.add(6);							// set1 = [2, 5, 6]
+		set1.add(3);					
+		set1.add(4);							// set1 = [1, 2, 3, 4]
+				
+		set2.add(3);
+		set2.add(4);
+		set2.add(5);
+		set2.add(6);							// set2 = [3, 4, 5, 6]
 		
-		set2.add(6);
-		set2.add(5);							// set2 = [5, 6]
-		
-        test.add(5);
-		test.add(6);							// test = [5, 6]
-		
-		set1.intersect(set2);
-		assertEquals(true, set1 == test);
+		set1.intersect(set2);					// Set 1 should now be [3, 4]
+		assertEquals(true, set1.contains(3));	// Making sure now that intersect() has worked on Set 1 with Set 2, 
+		assertEquals(true, set1.contains(4));	// that integers '3' and '4' are now in Set 1,
+		assertEquals(false, set1.contains(1));	
+		assertEquals(false, set1.contains(2));	// but integers '1' and '2' are not.
 	}
 	
 	@Test
@@ -171,12 +170,13 @@ public class IntegerSetTest {
 		set1.add(6);							// set1 = [2, 5, 6]
 		
 		set2.add(2);
-		set2.add(5);							// set1 = [2, 5]
-
-		test.add(6);							// test = [6]
+		set2.add(5);							// set2 = [2, 5]
 		
 		set1.diff(set2);						// set1 - set2 = [5]
-		assertEquals(true, set1 == test);
+		
+		assertEquals(false, set1.contains(2));	// Making sure now that diff() has worked on Set 1 with Set 2, 
+		assertEquals(false, set1.contains(5));	// so Set 1 shouldn't have 2 or 5 anymore,
+		assertEquals(true, set1.contains(6));	// but Set 1 should still have 6. 
 	}
 	
 	@Test
@@ -186,7 +186,6 @@ public class IntegerSetTest {
 		assertEquals(false, set1.isEmpty());
 		set1.clear();
 		assertEquals(true, set1.isEmpty());
-
 	}
 
 }
