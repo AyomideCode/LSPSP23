@@ -110,7 +110,7 @@ public class IntegerSet {
 	           add(tempArrayList.get(i));							// if so, adds the item
 	       }
 	    }
-		System.out.println(tempArrayList);
+		set = tempArrayList;
 	}	
 	
 	// Set intersection
@@ -118,7 +118,7 @@ public class IntegerSet {
 		ArrayList<Integer> tempArrayListA = set;
 		ArrayList<Integer> tempArrayListB = setB.getSet();
 		tempArrayListA.retainAll(tempArrayListB);
-		System.out.println(tempArrayListA);
+		set = tempArrayListA;
 	} 
 
 	// Set difference, i.e., s1 - s2
@@ -130,7 +130,7 @@ public class IntegerSet {
 	           fillerList.add(tempArrayList.get(i));				// adds the item, if not there
 	       }
 	    }
-	    System.out.println(fillerList);
+	    set = fillerList;
 	}
 
 	// Returns true if the set is empty, false otherwise
