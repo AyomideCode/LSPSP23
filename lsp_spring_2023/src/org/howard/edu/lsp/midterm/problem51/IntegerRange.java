@@ -12,14 +12,23 @@ public class IntegerRange implements Range {
     		this.lower = lower;
     		this.upper = upper;
     		}
+	
 	public boolean contains(int value) {
+		return true;
 	// implement
 	}
 	public boolean overlaps(Range other) throws EmptyRangeException {
+		if(other == null) {
+			throw new EmptyRangeException("EmptyRangeException: The provided range is empty.");
+		}
+		else {
+			return true;
+		}
 	// implement
 	}
 
 	public int size()  {
+		return upper - lower;
 	// implement
 	}
 }

@@ -6,7 +6,7 @@ upper bounds of a Range are given at the time the object is created.
 */ 
 
 
-public interface Range {
+public interface Range { 
 	public boolean contains( int value );  
     // returns true if v is ≥ lower bound and ≤ upper bound, 
     // and false otherwise 
@@ -16,5 +16,5 @@ public interface Range {
     //  EmptyRangeException is thrown when a null Range object is passed to the method
 	public int size(); 
     // returns the number of integers in the range
-
 }
+
