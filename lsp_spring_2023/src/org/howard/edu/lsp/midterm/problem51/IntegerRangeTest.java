@@ -12,7 +12,7 @@ class IntegerRangeTest {
 	@Test
 	@DisplayName("Test case for overlaps(), purposefully throwing IntegerSetException")
 	void testOverlaps_Exception() throws EmptyRangeException {
-		Throwable exception = assertThrows(EmptyRageException.class, () -> range1.overlaps() );
+		Throwable exception = assertThrows(EmptyRangeException.class, () -> range1.overlaps() );
 		assertEquals("EmptyRangeException: The provided range is empty.", exception.getMessage() );
 	}
 }
